@@ -36,12 +36,15 @@ public class FxDisallowedRevenueDAOImpl implements FxDisallowedRevenueDAO {
 		{
 		if(allowed.equalsIgnoreCase("Allowed"))
 				isAllowed = true;
-		if(allowed != null  && !"".equals(allowed))
+		if(allowed != null  && !"".equals(allowed) && !allowed.equalsIgnoreCase("All"))
     	    query.append(" WHERE qp.is_disallowed="+isAllowed);
 		
 	    if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate))
-			query.append(" AND qp.status_updated_at BETWEEN date_format('"+startDate+"','%y-%m-%d') AND date_format('"+endDate+"','%y-%m-%d') ");
-		}
+	    {
+			//query.append(" AND qp.status_updated_at BETWEEN date_format('"+startDate+"','%y-%m-%d') AND date_format('"+endDate+"','%y-%m-%d') ");
+	    	query.append(" AND qp.status_updated_at>=date_format('"+startDate+"','%y-%m-%d') AND qp.status_updated_at<=date_format('"+endDate+"','%y-%m-%d')");
+	    }
+	    }
 		disallowedRevenueList = entityManager.createNativeQuery(query.toString()).setMaxResults(10).getResultList(); 
 		}
 		catch (Exception e) {
