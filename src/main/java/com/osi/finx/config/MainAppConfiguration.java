@@ -6,10 +6,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.osi.finx.service.QxDisallowedRevenueService;
-import com.osi.finx.service.impl.QxDisallowedRevenueServiceImpl;
-import com.osi.finx.dao.QxDisallowedRevenueDAO;
-import com.osi.finx.dao.impl.QxDisallowedRevenueDAOImpl;
+import com.osi.finx.service.FxDisallowedRevenueService;
+import com.osi.finx.service.impl.FxDisallowedRevenueServiceImpl;
+import com.osi.finx.dao.FxDisallowedRevenueDAO;
+import com.osi.finx.dao.impl.FxDisallowedRevenueDAOImpl;
 
 
 @Configuration
@@ -19,21 +19,21 @@ public class MainAppConfiguration {
 	ConfigurableApplicationContext appContext;
 	
     /**
-     * Creating the QxDisallowedRevenueService bean.
-     * @return {@link QxDisallowedRevenueService}
+     * Creating the FxDisallowedRevenueService bean.
+     * @return {@link FxDisallowedRevenueService}
      */
     @Bean
-    public QxDisallowedRevenueService getQxDisallowedRevenueService() {
-        return new QxDisallowedRevenueServiceImpl();
+    public FxDisallowedRevenueService getFxDisallowedRevenueService() {
+        return new FxDisallowedRevenueServiceImpl();
     }
 
     /**
-     * Creating the QxDisallowedRevenueDAO bean.
-     * @return {@link QxDisallowedRevenueDAO}
+     * Creating the FxDisallowedRevenueDAO bean.
+     * @return {@link FxDisallowedRevenueDAO}
      */
     @Bean
-    public QxDisallowedRevenueDAO getQxDisallowedRevenueDAO() {
-        return new QxDisallowedRevenueDAOImpl();
+    public FxDisallowedRevenueDAO getFxDisallowedRevenueDAO() {
+        return new FxDisallowedRevenueDAOImpl();
     }
     
 }

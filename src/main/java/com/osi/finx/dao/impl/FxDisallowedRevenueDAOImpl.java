@@ -9,11 +9,11 @@ import javax.persistence.PersistenceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.osi.finx.dao.QxDisallowedRevenueDAO;
+import com.osi.finx.dao.FxDisallowedRevenueDAO;
 
-public class QxDisallowedRevenueDAOImpl implements QxDisallowedRevenueDAO {
+public class FxDisallowedRevenueDAOImpl implements FxDisallowedRevenueDAO {
     
-	private static final Logger LOGGER = LoggerFactory.getLogger(QxDisallowedRevenueDAOImpl.class);		
+	private static final Logger LOGGER = LoggerFactory.getLogger(FxDisallowedRevenueDAOImpl.class);		
 	
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -22,7 +22,7 @@ public class QxDisallowedRevenueDAOImpl implements QxDisallowedRevenueDAO {
 	@Override
 	public List<Object[]> viewDisallowedRevenueDetails(String allowed,String startDate,String endDate) {
 		
-		LOGGER.debug("QxDisallowedRevenueDAOImpl :: viewDisallowedRevenueDetails :: START");
+		LOGGER.debug("FxDisallowedRevenueDAOImpl :: viewDisallowedRevenueDetails :: START");
 		StringBuffer query = new StringBuffer();
 		List<Object[]> disallowedRevenueList = new ArrayList<>();
 		boolean isAllowed = false;
@@ -36,7 +36,8 @@ public class QxDisallowedRevenueDAOImpl implements QxDisallowedRevenueDAO {
 		{
 		if(allowed.equalsIgnoreCase("Allowed"))
 				isAllowed = true;
-	    query.append(" WHERE qp.is_disallowed="+isAllowed);
+		if(allowed != null  && !"".equals(allowed))
+    	    query.append(" WHERE qp.is_disallowed="+isAllowed);
 		
 	    if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate))
 			query.append(" AND qp.status_updated_at BETWEEN date_format('"+startDate+"','%y-%m-%d') AND date_format('"+endDate+"','%y-%m-%d') ");
@@ -44,9 +45,9 @@ public class QxDisallowedRevenueDAOImpl implements QxDisallowedRevenueDAO {
 		disallowedRevenueList = entityManager.createNativeQuery(query.toString()).setMaxResults(10).getResultList(); 
 		}
 		catch (Exception e) {
-			LOGGER.error("QxDisallowedRevenueDAOImpl :: viewDisallowedRevenueDetails :: ERROR ", e);
+			LOGGER.error("FxDisallowedRevenueDAOImpl :: viewDisallowedRevenueDetails :: ERROR ", e);
 		}
-		LOGGER.debug("QxDisallowedRevenueDAOImpl :: viewDisallowedRevenueDetails :: END");
+		LOGGER.debug("FxDisallowedRevenueDAOImpl :: viewDisallowedRevenueDetails :: END");
 		return disallowedRevenueList;
 	}
     	

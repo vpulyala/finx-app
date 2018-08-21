@@ -11,31 +11,31 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 
-import com.osi.finx.dao.QxDisallowedRevenueDAO;
-import com.osi.finx.service.QxDisallowedRevenueService;
-import com.osi.finx.service.dto.QxDisallowedRevenueDTO;
+import com.osi.finx.dao.FxDisallowedRevenueDAO;
+import com.osi.finx.service.FxDisallowedRevenueService;
+import com.osi.finx.service.dto.FxDisallowedRevenueDTO;
 
 
-public class QxDisallowedRevenueServiceImpl implements QxDisallowedRevenueService {
-	private static final Logger LOGGER = LoggerFactory.getLogger(QxDisallowedRevenueServiceImpl.class);  
+public class FxDisallowedRevenueServiceImpl implements FxDisallowedRevenueService {
+	private static final Logger LOGGER = LoggerFactory.getLogger(FxDisallowedRevenueServiceImpl.class);  
     
 	@Autowired  
-    private QxDisallowedRevenueDAO disallowedRevenueDAO;
+    private FxDisallowedRevenueDAO disallowedRevenueDAO;
 	
     /**
      * 
      */
-    public QxDisallowedRevenueServiceImpl() {
+    public FxDisallowedRevenueServiceImpl() {
         super();    
     }
 
 
     @SuppressWarnings("unchecked")
 	@Override
-	public List<QxDisallowedRevenueDTO> viewDisallowedRevenueDetails(String allowed,String endDate) {
+	public List<FxDisallowedRevenueDTO> viewDisallowedRevenueDetails(String allowed,String endDate) {
 		
-		LOGGER.debug("QxDisallowedRevenueServiceImpl :: viewDisallowedRevenueDetails :: START");
-		List<QxDisallowedRevenueDTO> disallowedRevenueDTOList = null;
+		LOGGER.debug("FxDisallowedRevenueServiceImpl :: viewDisallowedRevenueDetails :: START");
+		List<FxDisallowedRevenueDTO> disallowedRevenueDTOList = null;
 		String startDate = null;
 		try {
 			if(endDate != null && !"".equals(endDate))
@@ -47,10 +47,10 @@ public class QxDisallowedRevenueServiceImpl implements QxDisallowedRevenueServic
 			List<Object[]> disallowedRevenueList = disallowedRevenueDAO.viewDisallowedRevenueDetails(allowed,startDate,endDate);
 			if (disallowedRevenueList == null || (disallowedRevenueList != null && disallowedRevenueList.size() == 0)) {
 			}
-			disallowedRevenueDTOList = new ArrayList<QxDisallowedRevenueDTO>();
+			disallowedRevenueDTOList = new ArrayList<FxDisallowedRevenueDTO>();
 			for (Object[] obj : disallowedRevenueList) {
 				double total = 0.0; 
-				QxDisallowedRevenueDTO osiRmReportsDTO = new QxDisallowedRevenueDTO();
+				FxDisallowedRevenueDTO osiRmReportsDTO = new FxDisallowedRevenueDTO();
 				osiRmReportsDTO.setPayloadId((String.valueOf(obj[0])));
 				osiRmReportsDTO.setTrackingNo((String.valueOf(obj[1])));
 				osiRmReportsDTO.setItem(String.valueOf(obj[2]));
@@ -65,10 +65,10 @@ public class QxDisallowedRevenueServiceImpl implements QxDisallowedRevenueServic
 				disallowedRevenueDTOList.add(osiRmReportsDTO);
 			}
 		} catch (DataAccessException e) {
-			LOGGER.error("QxRgsReportServiceImpl :: viewDisallowedRevenueDetails :: ERROR ", e);
+			LOGGER.error("FxRgsReportServiceImpl :: viewDisallowedRevenueDetails :: ERROR ", e);
 
 		}
-		LOGGER.debug("QxRgsReportServiceImpl :: viewDisallowedRevenueDetails :: END");
+		LOGGER.debug("FxRgsReportServiceImpl :: viewDisallowedRevenueDetails :: END");
 		return disallowedRevenueDTOList;
 	}
     

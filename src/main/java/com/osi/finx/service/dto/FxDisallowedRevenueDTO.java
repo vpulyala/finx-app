@@ -5,7 +5,7 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QxDisallowedRevenueDTO implements Serializable {
+public class FxDisallowedRevenueDTO implements Serializable {
 
 	private String payloadId;
 	private String trackingNo;

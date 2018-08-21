@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface QxDisallowedRevenueDAO {
+public interface FxDisallowedRevenueDAO {
    
 	/**
      * Used to get the DisallowedRevenue Information
