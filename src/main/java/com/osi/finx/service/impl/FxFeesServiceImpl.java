@@ -1,6 +1,10 @@
 package com.osi.finx.service.impl;
 
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +32,7 @@ public class FxFeesServiceImpl implements FxFeesService {
 
     @SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public QxmaDropoffRates saveOrUpdate(QxmaDropoffRates fees) {
 		
 		LOGGER.debug("FxFeesServiceImpl :: saveOrUpdate :: START");
@@ -48,4 +53,20 @@ public class FxFeesServiceImpl implements FxFeesService {
 		return null;
 	}
     
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<QxmaDropoffRates> getAllFees() {
+			
+			LOGGER.debug("FxFeesServiceImpl :: viewDisallowedRevenueDetails :: START");
+			List<QxmaDropoffRates> feesList = null;
+			try {
+				feesList = osiGenericDAO.findAll(QxmaDropoffRates.class);
+			} catch (DataAccessException e) {
+				LOGGER.error("FxFeesServiceImpl :: viewDisallowedRevenueDetails :: ERROR ", e);
+
+			}
+			LOGGER.debug("FxFeesServiceImpl :: viewDisallowedRevenueDetails :: END");
+			return feesList;
+		}
 }

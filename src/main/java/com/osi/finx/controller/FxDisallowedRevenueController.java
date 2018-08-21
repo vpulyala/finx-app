@@ -29,16 +29,16 @@ public class FxDisallowedRevenueController {
 	 @GetMapping(path = "/viewDisallowedRevenue")
 	 public ResponseEntity<List<FxDisallowedRevenueDTO>> viewDisallowedRevenueDetails(@RequestParam("allowed") String allowed, @RequestParam("endDate") String endDate){
 		 LOGGER.debug("FxDisallowedRevenueController :: viewDisallowedRevenueDetails :: START");
-		 List<FxDisallowedRevenueDTO> rmRequests = null;
+		 List<FxDisallowedRevenueDTO> disallowedRevenues = null;
 			try {
-				rmRequests = disallowedRevenueService.viewDisallowedRevenueDetails(allowed,endDate);
+				disallowedRevenues = disallowedRevenueService.viewDisallowedRevenueDetails(allowed,endDate);
 			} 
 		  catch (Exception e) {
 			 LOGGER.error("FxDisallowedRevenueController :: viewDisallowedRevenueDetails :: ERROR ", e);
 		 }
 
 		 LOGGER.debug("FxDisallowedRevenueController :: viewDisallowedRevenueDetails :: END");
-		 return new ResponseEntity<List<FxDisallowedRevenueDTO>>(rmRequests, HttpStatus.OK);
+		 return new ResponseEntity<List<FxDisallowedRevenueDTO>>(disallowedRevenues, HttpStatus.OK);
 	 }
 	 		 
 }
