@@ -1,10 +1,12 @@
 package com.osi.finx.model;
-// Generated 08 14, 18 5:23:14 PM by Hibernate Tools 5.2.3.Final
+// Generated 08 16, 18 6:39:07 PM by Hibernate Tools 5.2.3.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,8 +18,8 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "qxma_ft_remittance", catalog = "finx_db")
 public class QxmaFtRemittance implements java.io.Serializable {
-
-	private long id;
+	
+	private Long id;
 	private Long orderId;
 	private String referenceId;
 	private String bankName;
@@ -55,13 +57,13 @@ public class QxmaFtRemittance implements java.io.Serializable {
 	}
 
 	@Id
-
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
-	public long getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

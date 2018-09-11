@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.osi.finx</groupId>
-	<artifactId>FinX-app</artifactId>
+	<artifactId>finx-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>finX-app</name>
+	<name>finx-app</name>
     <packaging>war</packaging>
 	
 	<description>Financial Tool for QuadX</description>
@@ -71,6 +71,31 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-oxm</artifactId>
 		</dependency>
+		<!-- Library for Excel generation  -->
+		<dependency>
+           <groupId>org.jxls</groupId>
+           <artifactId>jxls-reader</artifactId>
+           <version>2.0.3</version>
+        </dependency>
+        <!-- Jxls Reader module to read Excel files -->
+        <dependency>
+          <groupId>org.jxls</groupId>
+          <artifactId>jxls</artifactId>
+          <version>2.4.6</version>
+       </dependency>
+       <!-- java-uuid-generator -->
+		<dependency>
+		    <groupId>com.fasterxml.uuid</groupId>
+		    <artifactId>java-uuid-generator</artifactId>
+		    <version>3.1.0</version>
+		</dependency>
+		<!-- Jackson UserType -->
+		<dependency>
+          <groupId>org.codehaus.jackson</groupId>
+          <artifactId>jackson-mapper-asl</artifactId>
+          <version>1.9.13</version>
+        </dependency>
+        
 	</dependencies>
 
 	<build>

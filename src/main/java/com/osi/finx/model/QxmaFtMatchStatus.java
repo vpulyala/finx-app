@@ -1,11 +1,15 @@
 package com.osi.finx.model;
-// Generated 08 14, 18 5:23:14 PM by Hibernate Tools 5.2.3.Final
+// Generated 08 16, 18 6:39:07 PM by Hibernate Tools 5.2.3.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +22,7 @@ public class QxmaFtMatchStatus implements java.io.Serializable {
 	private Long msId;
 	private String code;
 	private String description;
+	private Set<QxmaFtCharges> qxmaFtChargeses = new HashSet<QxmaFtCharges>(0);
 
 	public QxmaFtMatchStatus() {
 	}
@@ -26,9 +31,10 @@ public class QxmaFtMatchStatus implements java.io.Serializable {
 		this.code = code;
 	}
 
-	public QxmaFtMatchStatus(String code, String description) {
+	public QxmaFtMatchStatus(String code, String description, Set<QxmaFtCharges> qxmaFtChargeses) {
 		this.code = code;
 		this.description = description;
+		this.qxmaFtChargeses = qxmaFtChargeses;
 	}
 
 	@Id
@@ -59,6 +65,15 @@ public class QxmaFtMatchStatus implements java.io.Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "qxmaFtMatchStatus")
+	public Set<QxmaFtCharges> getQxmaFtChargeses() {
+		return this.qxmaFtChargeses;
+	}
+
+	public void setQxmaFtChargeses(Set<QxmaFtCharges> qxmaFtChargeses) {
+		this.qxmaFtChargeses = qxmaFtChargeses;
 	}
 
 }

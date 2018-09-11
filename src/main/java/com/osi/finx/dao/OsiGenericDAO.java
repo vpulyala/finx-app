@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.osi.exception.OsiFinderException;
-import com.osi.exception.OsiTransactionException;
+import com.osi.finx.exception.OsiFinderException;
+import com.osi.finx.exception.OsiTransactionException;
 
 @Component
 public interface OsiGenericDAO {
@@ -53,7 +53,7 @@ public interface OsiGenericDAO {
 	 * @param clazz
 	 * @throws OsiFinderException 
 	 */
-	public <T> void deleteById(final long entityId, Class<T> clazz) throws OsiFinderException;
+	public <T> void deleteById(final int entityId, Class<T> clazz) throws OsiFinderException;
 	
 	/**
 	 * Get a detached copy of the entity. An unpersisted version of it.

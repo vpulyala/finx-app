@@ -10,14 +10,13 @@ import javax.transaction.Transactional;
 import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.osi.finx.constants.OsiConstants;
-import com.osi.finx.dao.OsiGenericDAO;
-import com.osi.exception.OsiFinderException;
-import com.osi.exception.OsiTransactionException;
-
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
+
+import com.osi.finx.constants.OsiConstants;
+import com.osi.finx.exception.OsiFinderException;
+import com.osi.finx.exception.OsiTransactionException;
+import com.osi.finx.dao.OsiGenericDAO;
 
 @Component
 public class OsiGenericDAOImpl implements OsiGenericDAO{
@@ -98,7 +97,7 @@ public class OsiGenericDAOImpl implements OsiGenericDAO{
 	 * Main Implementation of the deleteById method to delete an entity having only a reference to its ID.
 	 * @throws OsiFinderException 
 	 */
-	public <T> void deleteById(final long entityId, Class<T> clazz) throws OsiFinderException{
+	public <T> void deleteById(final int entityId, Class<T> clazz) throws OsiFinderException{
 		final T entity = findOne(entityId, clazz);
 		delete(entity);		
 	}

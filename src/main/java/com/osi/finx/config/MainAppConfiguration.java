@@ -6,12 +6,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.osi.finx.dao.FxDisallowedRevenueDAO;
-import com.osi.finx.dao.impl.FxDisallowedRevenueDAOImpl;
-import com.osi.finx.service.FxDisallowedRevenueService;
-import com.osi.finx.service.FxFeesService;
-import com.osi.finx.service.impl.FxDisallowedRevenueServiceImpl;
-import com.osi.finx.service.impl.FxFeesServiceImpl;
+import com.osi.finx.dao.DisallowedRevenueDAO;
+import com.osi.finx.dao.impl.DisallowedRevenueDAOImpl;
+import com.osi.finx.service.DisallowedRevenueService;
+import com.osi.finx.service.FeesService;
+import com.osi.finx.service.impl.DisallowedRevenueServiceImpl;
+import com.osi.finx.service.impl.FeesServiceImpl;
 
 
 @Configuration
@@ -21,31 +21,31 @@ public class MainAppConfiguration {
 	ConfigurableApplicationContext appContext;
 	
     /**
-     * Creating the FxDisallowedRevenueService bean.
-     * @return {@link FxDisallowedRevenueService}
+     * Creating the DisallowedRevenueService bean.
+     * @return {@link DisallowedRevenueService}
      */
     @Bean
-    public FxDisallowedRevenueService getFxDisallowedRevenueService() {
-        return new FxDisallowedRevenueServiceImpl();
+    public DisallowedRevenueService getDisallowedRevenueService() {
+        return new DisallowedRevenueServiceImpl();
     }
 
     /**
-     * Creating the FxDisallowedRevenueDAO bean.
-     * @return {@link FxDisallowedRevenueDAO}
+     * Creating the DisallowedRevenueDAO bean.
+     * @return {@link DisallowedRevenueDAO}
      */
     @Bean
-    public FxDisallowedRevenueDAO getFxDisallowedRevenueDAO() {
-        return new FxDisallowedRevenueDAOImpl();
+    public DisallowedRevenueDAO getDisallowedRevenueDAO() {
+        return new DisallowedRevenueDAOImpl();
     }
     
 
     /**
-     * Creating the FxFeesService bean.
-     * @return {@link FxFeesService}
+     * Creating the FeesService bean.
+     * @return {@link FeesService}
      */
     @Bean
-    public FxFeesService getFxFeesService() {
-        return new FxFeesServiceImpl();
+    public FeesService getFeesService() {
+        return new FeesServiceImpl();
     }
 
     

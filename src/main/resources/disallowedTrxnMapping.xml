@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+ <workbook>
+       <worksheet name="Sheet1">
+      <section startRow="0" endRow="0" />
+            <loop startRow="1" endRow="1" items="disallowedTransList" var="payload" varType="com.osi.finx.dto.DisallowedRevenueDTO">
+               <section startRow="1" endRow="1">
+                   <mapping row="1" col="0">payload.payloadId</mapping>
+                   <mapping row="1" col="1">payload.isDisallowed</mapping>
+               </section>
+               <loopbreakcondition>
+                   <rowcheck offset="0">
+             <cellcheck offset="0" />
+           </rowcheck>
+               </loopbreakcondition>
+           </loop>
+       </worksheet>
+</workbook>

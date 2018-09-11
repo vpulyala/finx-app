@@ -7,7 +7,6 @@ package com.osi.finx.constants;
  * <p>GENERIC_ERROR_CODES : SEQ ERR_0XXX is for Generic Errors
  * <p>GENERIC_SUCCESS_CODES : SEQ OK_0XXX is for Generic Success Messages
  * 
- * @author vpulyala
  */
 public class OsiConstants {
 	
@@ -26,6 +25,9 @@ public class OsiConstants {
 		public static final String ERR_0006 = "0006 - No Records Found.";
 		public static final String ERR_0007 = "0007 - An error occurred while trying to construct an email notification.";
 		public static final String ERR_0008 = "0008 - An error occurred while trying to load an entity.";
+		public static final String ERR_0009 = "0009 - An error occured while deleting an object.";
+		public static final String ERR_0010 = "0010 - An error occurred while processing the transactions.";
+		public static final String ERR_0011 = "0011 - An error occurred while trying to Close the Database connection.";
 	}
 	
 	/**

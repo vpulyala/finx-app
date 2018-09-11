@@ -1,5 +1,5 @@
 package com.osi.finx.model;
-// Generated 08 14, 18 5:23:14 PM by Hibernate Tools 5.2.3.Final
+// Generated 08 16, 18 6:39:07 PM by Hibernate Tools 5.2.3.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -31,6 +31,7 @@ public class QxmaFtParties implements java.io.Serializable {
 	private Date createdAt;
 	private Long updatedBy;
 	private Date lastDisbursedAt;
+	private Set<QxmaFtCharges> qxmaFtChargeses = new HashSet<QxmaFtCharges>(0);
 	private Set<QxmaFtWallet> qxmaFtWallets = new HashSet<QxmaFtWallet>(0);
 	private Set<QxmaFtLedger> qxmaFtLedgers = new HashSet<QxmaFtLedger>(0);
 
@@ -44,7 +45,7 @@ public class QxmaFtParties implements java.io.Serializable {
 
 	public QxmaFtParties(long partyId, QxmaFtPartyType qxmaFtPartyType, String externalId, Byte status,
 			Character metadata, Long createdBy, Date createdAt, Long updatedBy, Date lastDisbursedAt,
-			Set<QxmaFtWallet> qxmaFtWallets, Set<QxmaFtLedger> qxmaFtLedgers) {
+			Set<QxmaFtCharges> qxmaFtChargeses, Set<QxmaFtWallet> qxmaFtWallets, Set<QxmaFtLedger> qxmaFtLedgers) {
 		this.partyId = partyId;
 		this.qxmaFtPartyType = qxmaFtPartyType;
 		this.externalId = externalId;
@@ -54,6 +55,7 @@ public class QxmaFtParties implements java.io.Serializable {
 		this.createdAt = createdAt;
 		this.updatedBy = updatedBy;
 		this.lastDisbursedAt = lastDisbursedAt;
+		this.qxmaFtChargeses = qxmaFtChargeses;
 		this.qxmaFtWallets = qxmaFtWallets;
 		this.qxmaFtLedgers = qxmaFtLedgers;
 	}
@@ -142,6 +144,15 @@ public class QxmaFtParties implements java.io.Serializable {
 
 	public void setLastDisbursedAt(Date lastDisbursedAt) {
 		this.lastDisbursedAt = lastDisbursedAt;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "qxmaFtParties")
+	public Set<QxmaFtCharges> getQxmaFtChargeses() {
+		return this.qxmaFtChargeses;
+	}
+
+	public void setQxmaFtChargeses(Set<QxmaFtCharges> qxmaFtChargeses) {
+		this.qxmaFtChargeses = qxmaFtChargeses;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "qxmaFtParties")

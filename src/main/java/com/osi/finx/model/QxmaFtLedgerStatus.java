@@ -1,5 +1,5 @@
 package com.osi.finx.model;
-// Generated 08 14, 18 5:23:14 PM by Hibernate Tools 5.2.3.Final
+// Generated 08 16, 18 6:39:07 PM by Hibernate Tools 5.2.3.Final
 
 import java.util.HashSet;
 import java.util.Set;
